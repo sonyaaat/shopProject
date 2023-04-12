@@ -1,0 +1,43 @@
+.buy-item {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.buy__left {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.buy__text {
+  font-size: 20px;
+}
+
+.buy__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buy__btn {
+  background-color: #20a0aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: white;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  border-radius: 5px;
+}
+.buy__btn:last-child {
+  margin-left: 10px;
+}
+.buy__btn--cancel {
+  background-color: red;
+}/*# sourceMappingURL=.buy.css.map */

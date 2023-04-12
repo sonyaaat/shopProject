@@ -1,0 +1,118 @@
+/* --------------CLIENTS-------------------- */
+.clients__title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  justify-content: center;
+  color: $headers-text;
+  margin-bottom: 50px;
+}
+.clients__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -15px;
+}
+.clients__item {
+  margin: 15px;
+  @media screen and (max-width: 768px) {
+    width: calc(100% / 2 - 30px);
+    height: 92px;
+  }
+}
+
+.clients__link {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid #afb1b8;
+  border-radius: 4px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    border: 1px solid $accent-text;
+  }
+  @media screen and (max-width: 768px) {
+    height: 92px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 226px;
+    height: 92px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 170px;
+    height: 92px;
+  }
+}
+
+.clients__svg {
+  width: 106px;
+  height: 60px;
+  fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .clients__link:hover &,
+  .clients__link:focus & {
+    fill: $accent-text;
+  }
+}
+
+// /* --------------CLIENTS-------------------- */
+// .clients__title {
+//   font-weight: 700;
+//   font-size: 36px;
+//   line-height: 42px;
+//   text-align: center;
+//   letter-spacing: 0.03em;
+//   justify-content: center;
+//   color: $headers-text;
+//   margin-bottom: 50px;
+// }
+// .clients__list {
+//   display: flex;
+// }
+
+// .clients__link {
+//   display: inline-block;
+//   width: 170px;
+//   height: 92px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border: 1px solid #afb1b8;
+//   outline: transparent;
+//   border-radius: 4px;
+//   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+//   &:hover,
+//   &:focus {
+//     border: 1px solid $accent-text;
+//   }
+// }
+// .clients__item {
+//   margin-right: 30px;
+//   border-radius: 4px;
+//   &:last-child {
+//     margin-right: 0px;
+//   }
+
+//   &:hover,
+//   &:focus {
+//     border: 1px solid $accent-text;
+//   }
+// }
+
+// .clients__svg {
+//   width: 106px;
+//   height: 60px;
+//   fill: #afb1b8;
+//   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+//   .clients__link:hover &,
+//   .clients__link:focus & {
+//     fill: $accent-text;
+//   }
+// }

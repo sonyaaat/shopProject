@@ -1,0 +1,118 @@
+.item__container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.item__header {
+  margin-bottom: 20px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 55px;
+  line-height: 110%;
+  /* identical to box height, or 61px */
+
+  letter-spacing: 0.02em;
+
+  color: #000000;
+}
+.item__img {
+  max-width: 536px;
+  height: 729px;
+}
+@media screen and (max-width: 1200px) {
+  .item__img {
+    max-width: 300px;
+    height: 430px;
+  }
+}
+.item__box {
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+.item__price {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 110%;
+  /* identical to box height, or 44px */
+
+  letter-spacing: 0.02em;
+
+  /* Дополнительный акцент */
+
+  color: #998e78;
+}
+.item__box1 {
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+.item__box2 {
+  @media screen and (max-width: 768px) {
+    margin-top: 20px;
+  }
+  margin-left: 75px;
+}
+.item__subs {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+  /* identical to box height, or 28px */
+
+  letter-spacing: 0.02em;
+
+  color: #000000;
+}
+.item__sizes {
+  display: flex;
+  gap: 14px;
+}
+.item__size {
+  border: none;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 140%;
+  /* identical to box height, or 24px */
+
+  letter-spacing: 0.02em;
+
+  color: #000000;
+  box-sizing: border-box;
+
+  width: 41px;
+  height: 41px;
+
+  border: 1px solid #000000;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.item__input {
+  display: none;
+}
+.item__input:checked ~ .item__size {
+  background-color: black;
+  color: white;
+}
+.item__button {
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 22px 50px;
+  gap: 10px;
+
+  width: 268px;
+  height: 68px;
+
+  background: $accent-text;
+  border: none;
+  color: white;
+}

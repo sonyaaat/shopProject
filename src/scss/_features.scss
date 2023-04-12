@@ -1,0 +1,116 @@
+/* -----------------------Features---------------------------*/
+.features {
+  &__text {
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  &__photo {
+    height: 120px;
+    background: #f5f4fa;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__svg {
+    display: block;
+    height: 120px;
+    width: 70px;
+    height: 70px;
+  }
+}
+.features__header {
+  margin-bottom: 10px;
+
+  font-weight: 700;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: $headers-text;
+  letter-spacing: 0.03em;
+  font-size: 14px;
+  @media screen and (max-width: 767px) {
+    text-align: center;
+  }
+}
+.features__list {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+  }
+}
+
+.features__item {
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 767px) {
+    margin-bottom: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 354px;
+    margin: 15px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 270px;
+  }
+
+  &:last-child {
+    @media screen and (max-width: 480px) {
+      margin-bottom: 0px;
+    }
+    @media screen and (max-width: 767px) {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+// /* -----------------------Features---------------------------*/
+// .features {
+//   &__header {
+//     margin-bottom: 10px;
+
+//     font-weight: 700;
+//     line-height: 16px;
+//     text-transform: uppercase;
+//     color: $headers-text;
+//     letter-spacing: 0.03em;
+//     font-size: 14px;
+//   }
+
+//   &__text {
+//     line-height: 1.7;
+//     letter-spacing: 0.03em;
+//   }
+
+//   &__list {
+//     display: flex;
+//   }
+
+//   &__photo {
+//     height: 120px;
+//     background: #f5f4fa;
+//     border-radius: 4px;
+//     margin-bottom: 30px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+//   &__svg {
+//     display: block;
+//     height: 120px;
+//     width: 70px;
+//     height: 70px;
+//   }
+// }
+
+// .features__item {
+//   width: calc((100%-3 * 30px) / 4);
+//   margin-right: 30px;
+
+//   &:last-child {
+//     margin-right: 0;
+//   }
+// }

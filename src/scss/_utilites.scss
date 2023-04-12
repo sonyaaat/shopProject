@@ -1,0 +1,84 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color: $main-text;
+  background-color: $main-background;
+  font-size: 14px;
+}
+/* Утилиты */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+.list {
+  list-style: none;
+}
+.link {
+  text-decoration: none;
+}
+img {
+  display: block;
+}
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+  }
+}
+label {
+  display: block;
+}
+/* ---------------------Секції------------------ */
+.section-padding {
+  @media screen and (max-width: 1199.9px) {
+    padding-bottom: 118px;
+    padding-top: 118px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-bottom: 200px;
+    padding-top: 200px;
+  }
+}
+
+.section-bottom {
+  padding-bottom: 94px;
+}
+.section {
+  @media screen and (max-width: 1199.9px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-top: 94px;
+    padding-bottom: 94px;
+  }
+}
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
