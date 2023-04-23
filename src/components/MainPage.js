@@ -1,4 +1,5 @@
 import sprite from '../images/sprite.svg';
+import React from 'react';
 import img1 from '../images/casual.webp';
 import img2 from '../images/sport.webp';
 import img3 from '../images/festive.jpeg';

@@ -1,4 +1,4 @@
-
+import React from 'react';
 import sprite from '../images/sprite.svg';
 const Footer=()=>{
 return(

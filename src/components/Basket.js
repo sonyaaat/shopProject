@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteFromBasket, getFav } from '../redux/main/main-operations';

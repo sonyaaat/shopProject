@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import React from 'react';
 import sprite from '../images/sprite.svg';
 const Completed = () => {
   return (
