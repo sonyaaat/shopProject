@@ -151,7 +151,7 @@ const mainSlice = createSlice({
     [getUserOrders.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      console.log(action.payload)
+     
       state.userOrders=action.payload
     },
     [getUserOrders.rejected]: handleRejected,
@@ -160,7 +160,7 @@ const mainSlice = createSlice({
     [updateStatus.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      console.log(action.payload)
+   
       state.orders=action.payload
       toast.success('Status was successfully changed');
     },
@@ -170,7 +170,7 @@ const mainSlice = createSlice({
     [cancelOrder.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      console.log(action.payload,"RES")
+      
       state.userOrders=action.payload
       toast.success('Order was cancelled');
     },

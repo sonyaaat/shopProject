@@ -12,7 +12,7 @@ const Portfolio = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    console.log('aa');
+   
     dispatch(getAllItems());
   }, [dispatch]);
  
@@ -26,10 +26,10 @@ const Portfolio = () => {
  
   
   
-  console.log(items,'KKK')
+
   const [filteredItems, setFilteredItems] = useState(items);
   const [searchedItems, setSearchedItems] = useState(items);
-  console.log('items', items);
+  
   useEffect(() => {
     if(items){
       setFilteredItems(items)
@@ -63,7 +63,7 @@ const Portfolio = () => {
       const res=[...filteredItems].filter((item)=>{
         return item.name.toLowerCase().includes(search) || item.description.toLowerCase().includes(search)
       })
-      console.log("SEARCH".res)
+      
       setSearchedItems(res)
     }
     else{
@@ -74,7 +74,7 @@ const Portfolio = () => {
   
   function handleChange(event) {
     setSerch(event.target.value)
-    console.log(event.target.value);
+   
   }
   return (
     <>
@@ -122,7 +122,7 @@ const Portfolio = () => {
               <ul class="list portfolio__list">
                 {searchedItems &&
                   searchedItems.map(item => (
-                    <li class="portfolio__item">
+                    <li key={item._id} class="portfolio__item">
                       <Link
                         to={`/item/${item._id}`}
                         class="link portfolio__link"

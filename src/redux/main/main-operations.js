@@ -64,7 +64,7 @@ export const getAllItems = createAsyncThunk(
     async (credentials, thunkAPI) => {
       try {
         const {id}=credentials
-        console.log("I",id)
+    
         const response = await axios.post(`/user/items/addToFavorite/${id}`);
         return response.data;
       } catch (e) {

@@ -34,7 +34,7 @@ return(
 
           <h2 className="login-header">Log in</h2>
 
-          <form className="login-container" onSubmit={handleSubmit}>
+          <form className="login-container" onSubmit={handleSubmit} data-testid="login">
             <p><input  onChange={handleChange} type="email" placeholder="Email" name="email"value={email} /></p>
             <p><input  onChange={handleChange} type="password" placeholder="Password" name="password" value={password}/></p>
             <p><input  onChange={handleChange} type="submit" value="Log in" /></p>

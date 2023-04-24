@@ -32,19 +32,19 @@ const Add = () => {
     const {
       elements: { name, quantity, price, description },
     } = evt.target;
-    console.log(name, quantity, price, description);
+    
     formData.append("name",name.value)
     formData.append("quantity",quantity.value)
     formData.append("price",price.value)
     formData.append("description",description.value)
-    console.log(downloaded)
+    
     if(!name || !quantity || !price || !description || !downloaded){
       formData=new FormData()
       toast.error("Add image")
       return
     }
-    console.log("formdata",...formData)
-    console.log(name.value, quantity.value, price.value, description.value)
+   
+    
     dispatch(addItem(formData))
     setName("")
     setQuantity("")
@@ -53,13 +53,13 @@ const Add = () => {
    
   };
   const imgChange = event => {
-    console.log('f');
+   
     img=event.target.files[0]
-    console.log(event.target.files[0]);
+   
   
     formData.append('image', event.target.files[0]);
   downloaded=true
-    console.log(...formData);
+   
   };
   return (
     <main>
@@ -114,7 +114,7 @@ const Add = () => {
                   </div>
                 </div>
                 <div className="card-body">
-                  <form className="add__form" onSubmit={onSubmit}>
+                  <form className="add__form" onSubmit={onSubmit} data-testid="add-form">
                     <h6 className="heading-small text-muted mb-4">
                       information
                     </h6>
@@ -144,14 +144,14 @@ const Add = () => {
                           <div className="form-group">
                             <label
                               className="form-control-label"
-                              for="input-email"
+                              for="input-desc"
                             >
                               Description
                             </label>
                             <input
                               required
                               type="text"
-                              id="input-username"
+                              id="input-desc"
                               className="form-control form-control-alternative"
                               placeholder="description"
                               value={description}

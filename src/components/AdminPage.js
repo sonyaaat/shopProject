@@ -1,22 +1,26 @@
-import { useEffect } from 'react';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getOrders, getUsers } from '../redux/main/main-operations';
-import { selectAdmins, selectOrders, selectUsers } from '../redux/main/main-selectors';
+import { useEffect } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrders, getUsers } from "../redux/main/main-operations";
+import {
+  selectAdmins,
+  selectOrders,
+  selectUsers,
+} from "../redux/main/main-selectors";
 
 const AdminPage = () => {
   const users = useSelector(selectUsers);
   const admins = useSelector(selectAdmins);
-  const orders=useSelector(selectOrders)
-  console.log("Or",orders)
+  const orders = useSelector(selectOrders);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
-    dispatch(getOrders())
+    dispatch(getOrders());
   }, [dispatch]);
   return (
     <>
-      <section class=" ">
+      <section className=" ">
         <div className="container admin">
           <p className="admin__header">Regular Users</p>
           <table className="table-users styled-table">
@@ -30,8 +34,8 @@ const AdminPage = () => {
             </thead>
             <tbody className="table__body">
               {users.length > 0 &&
-                users.map(mail => (
-                  <tr>
+                users.map((mail) => (
+                  <tr key={mail}>
                     <td>{mail}</td>
                     <td>1</td>
                     <td>1</td>
@@ -49,13 +53,12 @@ const AdminPage = () => {
             </thead>
             <tbody className="table2">
               {admins.length > 0 &&
-                admins.map(mail => (
+                admins.map((mail) => (
                   <tr key={mail}>
                     <td>{mail}</td>
                     <td>Manager</td>
                   </tr>
                 ))}
-            
             </tbody>
           </table>
           <p className="admin__header admin__header2">Orders</p>
@@ -70,8 +73,8 @@ const AdminPage = () => {
               </tr>
             </thead>
             <tbody className="table__body">
-                {orders.length > 0 &&
-                orders.map(el => (
+              {orders.length > 0 &&
+                orders.map((el) => (
                   <tr>
                     <td>{el.itemId._id}</td>
                     <td>{el.owner}</td>

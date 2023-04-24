@@ -23,13 +23,13 @@ const UserOrders = () => {
     dispatch(cancelOrder({ orderId: _id }));
   };
   const [filteredOrders, setFilteredOrders] = useState(orders);
-  console.log(orders,"JJ")
+ 
   useEffect(() => {
     if (filter && orders.length>0) {
       const res = [...orders].filter(item => {
         return item.status.toLowerCase() === filter.toLowerCase();
       });
-      console.log(res);
+   
       setFilteredOrders(res);
     }
     if (filter === 'All') {

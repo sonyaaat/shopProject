@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import React from 'react';
 import background from "../images/main.jpeg"
 import { register } from "../redux/auth/auth-operations";
@@ -43,7 +44,7 @@ const Register = () => {
               <p>
                 <input type="submit" value="Register" />
               </p>
-              <Link to="/login">
+              <Link to="/login" data-testid="login">
             <input className="register" type="button" value="Login" />
             </Link>
             </form>

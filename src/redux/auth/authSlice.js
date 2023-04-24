@@ -14,9 +14,7 @@ const authSlice = createSlice({
 extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
-        console.log("action.payload",action.payload)
-        console.log("state.user",action.payload.user)
-        console.log("action.payload.token",action.payload.token)
+        
   
         // state.user = action.payload.user;
         // state.token = action.payload.token;
@@ -28,12 +26,12 @@ extraReducers: builder => {
         state.isLoggedIn = false;
       })
       .addCase(logIn.fulfilled, (state,action) => {
-        console.log("action.payload",action.payload)
+       
         
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        console.log(state)
+     
         toast.success("You successfully loged in", {
           theme: "colored"
         })

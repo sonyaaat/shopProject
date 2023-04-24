@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getOrders, updateStatus } from '../redux/main/main-operations';
-import { selectOrders } from '../redux/main/main-selectors';
+import { useEffect, useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrders, updateStatus } from "../redux/main/main-operations";
+import { selectOrders } from "../redux/main/main-selectors";
 
 const OrdersAdmin = () => {
   const [selectedOrder, setSelectedOrder] = useState();
@@ -15,29 +15,27 @@ const OrdersAdmin = () => {
   const orders = useSelector(selectOrders);
   useEffect(() => {
     if (orders.length > 0) {
-      const res = orders.find(order => {
+      const res = orders.find((order) => {
         return order._id === selectedOrder;
       });
       setOrderInfo(res);
     }
   }, [selectedOrder, orders]);
 
-  console.log(orders);
-  const onSubmit = evt => {
+  const onSubmit = (evt) => {
     evt.preventDefault();
     const {
       target: { orderId },
     } = evt;
     setSelectedOrder(orderId.value);
-    console.log(orderId.value);
   };
-  const changeStatus = evt => {
+  const changeStatus = (evt) => {
     evt.preventDefault();
     const {
-        target: { status },
-      } = evt;
-      console.log(status.value)
-      dispatch(updateStatus({status:status.value,orderId:selectedOrder}))
+      target: { status },
+    } = evt;
+
+    dispatch(updateStatus({ status: status.value, orderId: selectedOrder }));
   };
   return (
     <div className="container order__container">
@@ -58,31 +56,31 @@ const OrdersAdmin = () => {
       <div className="order__main">
         {orderInfo && (
           <>
-            <div class="item__box">
-              <div class="item__box1">
+            <div className="item__box">
+              <div className="item__box1">
                 <img
-                  class="order__img"
+                  className="order__img"
                   height={500}
                   src={`http://localhost:3000/${orderInfo.itemId.image}`}
                   alt="ItemPhoto"
                 />
               </div>
-              <div class="item__box2">
-                <h1 class="item__header">{orderInfo.itemId.name}</h1>
+              <div className="item__box2">
+                <h1 className="item__header">{orderInfo.itemId.name}</h1>
                 <p className="item__desk">{orderInfo.itemId.description}</p>
                 <p className="order__info">
                   <b>Price:</b> ${orderInfo.itemId.price}
                 </p>
                 <p className="order__info">
-                  {' '}
+                  {" "}
                   <b>Quantity</b>: {orderInfo.quantity}
                 </p>
                 <p className="order__info">
-                  {' '}
+                  {" "}
                   <b>Owner</b>: {orderInfo.owner}
                 </p>
                 <p className="order__info">
-                  {' '}
+                  {" "}
                   <b>Status</b>: {orderInfo.status}
                 </p>
                 <form onSubmit={changeStatus}>
@@ -95,7 +93,10 @@ const OrdersAdmin = () => {
                     <option value="Completed">Completed</option>
                     <option value="Cancelled">Cancelled</option>
                   </select>
-                  <button type="submit" className="order-search-button order-search-button--left">
+                  <button
+                    type="submit"
+                    className="order-search-button order-search-button--left"
+                  >
                     Change
                   </button>
                 </form>

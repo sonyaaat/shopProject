@@ -1,20 +1,20 @@
-import sprite from '../images/sprite.svg';
-import React from 'react';
-import img1 from '../images/casual.webp';
-import img2 from '../images/sport.webp';
-import img3 from '../images/festive.jpeg';
-import img4 from '../images/people1.jpg';
-import img5 from '../images/people2.jpg';
-import img6 from '../images/people3.jpg';
-import img7 from '../images/people4.jpg';
+import sprite from "../images/sprite.svg";
+import React from "react";
+import img1 from "../images/casual.webp";
+import img2 from "../images/sport.webp";
+import img3 from "../images/festive.jpeg";
+import img4 from "../images/people1.jpg";
+import img5 from "../images/people2.jpg";
+import img6 from "../images/people3.jpg";
+import img7 from "../images/people4.jpg";
 
-import background from '../images/main.jpeg';
-import { useState } from 'react';
+import background from "../images/main.jpeg";
+import { useState } from "react";
 
 const MainPage = () => {
   const [showModal, setShowModal] = useState(false);
   const modalChange = () => {
-    setShowModal(prev => !prev);
+    setShowModal((prev) => !prev);
   };
   return (
     <>
@@ -347,79 +347,100 @@ const MainPage = () => {
         </section>
       </main>
 
-     {showModal &&  <div class="backdrop " data-modal>
-        <div class="modal">
-          <button class="backdrop__button" onClick={modalChange} type="button" data-modal-close>
-            <svg class="backdrop__close">
-              <use href={`${sprite}#icon-cross`}></use>
-            </svg>
-          </button>
-
-          <form class="form">
-            <b class="form__header">Leave your data and we will call you</b>
-            <div class="form__field">
-              <label for="name" class="form__label">
-                Name
-              </label>
-              <input name="name" type="text" id="name" class="form__input" />
-              <svg class="form__icon form__icon--3">
-                <use href="./images/sprite.svg#form-3"></use>
+      {showModal && (
+        <div className="backdrop " data-modal>
+          <div className="modal">
+            <button
+              className="backdrop__button"
+              onClick={modalChange}
+              type="button"
+              data-modal-close
+            >
+              <svg className="backdrop__close">
+                <use href={`${sprite}#icon-cross`}></use>
               </svg>
-            </div>
-
-            <div class="form__field">
-              <label for="tel" class="form__label">
-                Phone
-              </label>
-              <input name="tel" type="tel" id="tel" class="form__input" />
-              <svg class="form__icon form__icon--1">
-                <use href="./images/sprite.svg#form-1"></use>
-              </svg>
-            </div>
-
-            <div class="form__field">
-              <label for="email" class="form__label">
-                Mail
-              </label>
-              <input name="email" type="email" id="email" class="form__input" />
-              <svg class="form__icon form__icon--2">
-                <use href="./images/sprite.svg#form-2"></use>
-              </svg>
-            </div>
-
-            <div class="form__field form__field--big">
-              <label for="comments" class="comments">
-                Comments
-              </label>
-              <textarea
-                name="comments"
-                class="comments__input"
-                id="comments"
-                placeholder="Input text"
-              ></textarea>
-            </div>
-
-            <label for="policy" class="footer__policy">
-              <input
-                type="checkbox"
-                name="policy"
-                id="policy"
-                class="policy-checkbox"
-              />
-              <span class="policy-icon"></span>
-
-              <b class="policy-text">I agree with the newsletter and accept</b>
-              <a href="" class="footer__policy--accent">
-                Agreement conditions
-              </a>
-            </label>
-
-            <button type="submit" class="modal__button">
-              Send
             </button>
-          </form>
+
+            <form className="form">
+              <b className="form__header">
+                Leave your data and we will call you
+              </b>
+              <div className="form__field">
+                <label for="name" className="form__label">
+                  Name
+                </label>
+                <input
+                  name="name"
+                  type="text"
+                  id="name"
+                  className="form__input"
+                />
+                <svg className="form__icon form__icon--3">
+                  <use href="./images/sprite.svg#form-3"></use>
+                </svg>
+              </div>
+
+              <div className="form__field">
+                <label for="tel" className="form__label">
+                  Phone
+                </label>
+                <input name="tel" type="tel" id="tel" className="form__input" />
+                <svg className="form__icon form__icon--1">
+                  <use href="./images/sprite.svg#form-1"></use>
+                </svg>
+              </div>
+
+              <div className="form__field">
+                <label for="email" className="form__label">
+                  Mail
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  id="email"
+                  className="form__input"
+                />
+                <svg className="form__icon form__icon--2">
+                  <use href="./images/sprite.svg#form-2"></use>
+                </svg>
+              </div>
+
+              <div className="form__field form__field--big">
+                <label for="comments" className="comments">
+                  Comments
+                </label>
+                <textarea
+                  name="comments"
+                  className="comments__input"
+                  id="comments"
+                  placeholder="Input text"
+                ></textarea>
+              </div>
+
+              <label for="policy" className="footer__policy">
+                <input
+                  type="checkbox"
+                  name="policy"
+                  id="policy"
+                  className="policy-checkbox"
+                />
+                <span className="policy-icon"></span>
+
+                <b className="policy-text">
+                  I agree with the newsletter and accept
+                </b>
+                <a href="" className="footer__policy--accent">
+                  Agreement conditions
+                </a>
+              </label>
+
+              <button type="submit" className="modal__button">
+                Send
+              </button>
+            </form>
+          </div>
         </div>
-      </div>}
+      )}
     </>
   );
 };

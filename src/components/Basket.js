@@ -58,7 +58,7 @@ return previousValue+Number(price)
                       </div>
                       <div className="product__price">{price}</div>
                       <div className="product__controls">
-                        <button type="button" className="basket__remove" onClick={()=>onDeleteBasket(itemId)}>
+                        <button type="button" className="basket__remove" data-testid="basket__remove" onClick={()=>onDeleteBasket(itemId)}>
                           <svg width="30px" height="21px" className="icon-bin">
                             <use
                               className="icon-menu"
