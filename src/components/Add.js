@@ -1,65 +1,58 @@
-import { useState } from 'react';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../redux/main/main-operations';
-import {  toast } from 'react-toastify';
+import { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/main/main-operations";
+import { toast } from "react-toastify";
 let formData = new FormData();
-let downloaded
-let img
+let downloaded;
+
 const Add = () => {
-  const dispatch=useDispatch()
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'name':
+      case "name":
         return setName(value);
-      case 'description':
+      case "description":
         return setDescription(value);
-      case 'price':
+      case "price":
         return setPrice(value);
-      case 'quantity':
+      case "quantity":
         return setQuantity(value);
 
       default:
         return;
     }
   };
-  const onSubmit = evt => {
+  const onSubmit = (evt) => {
     evt.preventDefault();
     const {
       elements: { name, quantity, price, description },
     } = evt.target;
-    
-    formData.append("name",name.value)
-    formData.append("quantity",quantity.value)
-    formData.append("price",price.value)
-    formData.append("description",description.value)
-    
-    if(!name || !quantity || !price || !description || !downloaded){
-      formData=new FormData()
-      toast.error("Add image")
-      return
+
+    formData.append("name", name.value);
+    formData.append("quantity", quantity.value);
+    formData.append("price", price.value);
+    formData.append("description", description.value);
+
+    if (!name || !quantity || !price || !description || !downloaded) {
+      formData = new FormData();
+      toast.error("Add image");
+      return;
     }
-   
-    
-    dispatch(addItem(formData))
-    setName("")
-    setQuantity("")
-    setPrice("")
-    setDescription("")
-   
+
+    dispatch(addItem(formData));
+    setName("");
+    setQuantity("");
+    setPrice("");
+    setDescription("");
   };
-  const imgChange = event => {
-   
-    img=event.target.files[0]
-   
-  
-    formData.append('image', event.target.files[0]);
-  downloaded=true
-   
+  const imgChange = (event) => {
+    formData.append("image", event.target.files[0]);
+    downloaded = true;
   };
   return (
     <main>
@@ -90,7 +83,7 @@ const Add = () => {
                     </div>
                   </div>
                   <div className="text-center"></div>
-                  <label for="images" className="drop-container">
+                  <label htmlFor="images" className="drop-container">
                     <span className="drop-title">Drop files here</span>
                     <input
                       type="file"
@@ -114,7 +107,11 @@ const Add = () => {
                   </div>
                 </div>
                 <div className="card-body">
-                  <form className="add__form" onSubmit={onSubmit} data-testid="add-form">
+                  <form
+                    className="add__form"
+                    onSubmit={onSubmit}
+                    data-testid="add-form"
+                  >
                     <h6 className="heading-small text-muted mb-4">
                       information
                     </h6>
@@ -124,7 +121,7 @@ const Add = () => {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-name"
+                              htmlFor="input-name"
                             >
                               Name
                             </label>
@@ -144,7 +141,7 @@ const Add = () => {
                           <div className="form-group">
                             <label
                               className="form-control-label"
-                              for="input-desc"
+                              htmlFor="input-desc"
                             >
                               Description
                             </label>
@@ -166,7 +163,7 @@ const Add = () => {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-first-name"
+                              htmlFor="input-first-name"
                             >
                               Quantity
                             </label>
@@ -186,7 +183,7 @@ const Add = () => {
                           <div className="form-group focused">
                             <label
                               className="form-control-label"
-                              for="input-last-name"
+                              htmlFor="input-last-name"
                             >
                               Price
                             </label>

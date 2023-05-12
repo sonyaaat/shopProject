@@ -46,7 +46,7 @@ const OrdersAdmin = () => {
         <select id="size" name="orderId" className="order-search-select">
           {orders.length > 0 &&
             orders.map(({ _id }) => {
-              return <option value={_id}>{_id}</option>;
+              return <option key={_id} value={_id}>{_id}</option>;
             })}
         </select>
         <button type="submit" className="order-search-button">

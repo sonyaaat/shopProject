@@ -1,80 +1,74 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { getAllItems } from '../redux/main/main-operations';
-import { selectIsLoading, selectItems } from '../redux/main/main-selectors';
-import Spinner from './Spinner';
+import { useEffect, useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { getAllItems } from "../redux/main/main-operations";
+import { selectIsLoading, selectItems } from "../redux/main/main-selectors";
+import Spinner from "./Spinner";
 const Portfolio = () => {
   const items = useSelector(selectItems);
-  const [filter, setFilter] = useState('');
-  const [search, setSerch] = useState('');
+  const [filter, setFilter] = useState("");
+  const [search, setSerch] = useState("");
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-   
     dispatch(getAllItems());
   }, [dispatch]);
- 
 
-  const changeFilter = evt => {
+  const changeFilter = (evt) => {
     evt.preventDefault();
     const value = evt.target.value;
     setFilter(value);
   };
   const isLoading = useSelector(selectIsLoading);
- 
-  
-  
 
   const [filteredItems, setFilteredItems] = useState(items);
   const [searchedItems, setSearchedItems] = useState(items);
-  
+
   useEffect(() => {
-    if(items){
-      setFilteredItems(items)
-      setSearchedItems(items)
+    if (items) {
+      setFilteredItems(items);
+      setSearchedItems(items);
     }
-    if (filter === 'toHigh') {
+    if (filter === "toHigh") {
       const res = [...items].sort(
         (first, second) => parseInt(first.price) - parseInt(second.price)
       );
       setFilteredItems(res);
     }
-    if (filter === 'toLow') {
+    if (filter === "toLow") {
       const res = [...items].sort(
         (first, second) => parseInt(second.price) - parseInt(first.price)
       );
       setFilteredItems(res);
     }
-    if (filter === 'toAlph') {
+    if (filter === "toAlph") {
       const res = [...items].sort((first, second) =>
         first.name.localeCompare(second.name)
       );
       setFilteredItems(res);
     }
-    if(filter==="newest")
-    {
-      setFilteredItems(items)
+    if (filter === "newest") {
+      setFilteredItems(items);
     }
   }, [filter, items]);
   useEffect(() => {
     if (search) {
-      const res=[...filteredItems].filter((item)=>{
-        return item.name.toLowerCase().includes(search) || item.description.toLowerCase().includes(search)
-      })
-      
-      setSearchedItems(res)
+      const res = [...filteredItems].filter((item) => {
+        return (
+          item.name.toLowerCase().includes(search) ||
+          item.description.toLowerCase().includes(search)
+        );
+      });
+
+      setSearchedItems(res);
+    } else {
+      setSearchedItems(filteredItems);
     }
-    else{
-      setSearchedItems(filteredItems)
-    }
-    
   }, [search, filteredItems]);
-  
+
   function handleChange(event) {
-    setSerch(event.target.value)
-   
+    setSerch(event.target.value);
   }
   return (
     <>
@@ -83,21 +77,22 @@ const Portfolio = () => {
           <div className="container portfolio__container">
             <h1 hidden>Portfolio</h1>
 
-         
-            
+            <input
+              type="text"
+              placeholder="What you want to find?"
+              value={search}
+              className="portfolio__input"
+              onChange={handleChange}
+            />
 
-              <input type="text" placeholder="What you want to find?" value={search} class="portfolio__input" onChange={handleChange} />
-             
-           
-
-            <script
+            {/* <script
               type="module"
               src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
             ></script>
             <script
-              nomodule
+              noModule
               src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-            ></script>
+            ></script> */}
 
             <label htmlFor="size" className="order-search-label">
               Filter
@@ -107,44 +102,51 @@ const Portfolio = () => {
               name="filter"
               className="order-search-select portfolio__select"
               onChange={changeFilter}
+              defaultValue="newest"
             >
-              <option></option>
-              <option value="newest" selected> Newest</option>
+              <option value="newest" >
+                {" "}
+                Newest
+              </option>
               <option value="toHigh">Price: Low to High</option>
               <option value="toLow">Price: High to Low</option>
               <option value="toAlph">In alphabetical order</option>
             </select>
 
-           
             {isLoading ? (
               <Spinner />
             ) : (
-              <ul class="list portfolio__list">
+              <ul className="list portfolio__list">
                 {searchedItems &&
-                  searchedItems.map(item => (
-                    <li key={item._id} class="portfolio__item">
+                  searchedItems.map((item) => (
+                    <li key={item._id} className="portfolio__item">
                       <Link
                         to={`/item/${item._id}`}
-                        class="link portfolio__link"
+                        className="link portfolio__link"
                       >
-                        <div class="portfolio__thumb">
+                        <div className="portfolio__thumb">
                           <img
                             alt={item.name}
-                            class="portfolio__img"
+                            className="portfolio__img"
                             src={`http://localhost:3000/${item.image}`}
                           />
                         </div>
-                        <div class="portfolio__content">
-                          <h2 class="portfolio__header">{item.name}</h2>
-                          <p class="portfolio__text">{item.description}</p>
-                          <p class="portfolio__price">Price: {item.price}₴</p>
+                        <div className="portfolio__content">
+                          <h2 className="portfolio__header">{item.name}</h2>
+                          <p className="portfolio__text">{item.description}</p>
+                          <p className="portfolio__price">
+                            Price: {item.price}₴
+                          </p>
                         </div>
                       </Link>
                     </li>
                   ))}
-                    {searchedItems.length===0 && search && <p className="basket__empty">There isn`t any item with this name</p>}
+                {searchedItems.length === 0 && search && (
+                  <p className="basket__empty">
+                    There isn`t any item with this name
+                  </p>
+                )}
               </ul>
-            
             )}
           </div>
         </section>

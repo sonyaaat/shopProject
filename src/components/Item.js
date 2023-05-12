@@ -42,14 +42,14 @@ const Item = () => {
                 <div className="item__box2">
                   <p className="item__price"> ${price}</p>
                   <p className="item__subs">Choose a size</p>
-                  <form className="item__sizes">
-                    <label>
+                  <form className="item__sizes" defaultChecked="S">
+                    <label >
                       <input
                         type="radio"
                         className="item__input"
                         name="size"
                         value="S"
-                        checked
+                        
                       />
                       <div className="item__size">S</div>
                     </label>

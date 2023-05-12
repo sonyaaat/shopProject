@@ -4,13 +4,11 @@ import { createMemoryHistory } from "@remix-run/router";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter, Router } from "react-router-dom";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { App } from "../src/components/App";
 import { Provider } from "react-redux";
 
 import Header from "../src/components/Header";
-// import * as redux from "react-redux";
-
 
 import * as reactHooks from "react-redux";
 jest.mock("react-redux");
@@ -19,16 +17,7 @@ describe("Header", () => {
   const dispatch = jest.fn();
   let store;
   const history = createMemoryHistory();
-  beforeEach(() => {
-    // dispatch = jest.fn();
-    // useDispatch.mockReturnValue(dispatch);
-    //   store = mockStore({
-    //     auth: {
-    //       isLoggedIn: true,
-    //       role: 'admin',
-    //     },
-    //   });
-  });
+  beforeEach(() => {});
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -145,7 +134,6 @@ describe("Header", () => {
     const logoutButton = screen.getByTestId("logout-button");
     fireEvent.click(logoutButton);
 
-   
     expect(dispatch).toHaveBeenCalledTimes(1);
   });
 });

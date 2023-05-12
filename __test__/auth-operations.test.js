@@ -1,12 +1,8 @@
 import axios from "axios";
-import { toast } from 'react-toastify';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from '../src/redux/auth/auth-operations';
-
+import { logOut } from "../src/redux/auth/auth-operations";
 
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-
 
 jest.mock("axios");
 
@@ -40,21 +36,5 @@ describe("authSlice", () => {
     const error = { message: errorMessage };
     axios.get.mockRejectedValueOnce(error);
     await store.dispatch(logOut());
-    const actions = store.getActions();
-    // expect(actions).toMatchObject([
-      
-    //   {
-    //     type: "/auth/logout/rejected",
-    //     payload: errorMessage,
-    //     error: true,
-    //     meta: {
-    //       aborted: false,
-    //       condition: false,
-    //       rejectedWithValue: true,
-    //       requestId: expect.any(String),
-    //       requestStatus: "rejected",
-    //     },
-    //   },
-    // ]);
   });
 });

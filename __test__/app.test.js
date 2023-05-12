@@ -10,8 +10,6 @@ import { refreshUser } from "../src/redux/auth/auth-operations";
 import { useSelector, useDispatch } from "react-redux";
 import { MemoryRouter } from "react-router-dom"; // import MemoryRouter
 
-
-
 jest.mock("../src/redux/auth/auth-selectors", () => ({
   selectIsRefreshing: jest.fn(),
 }));
@@ -78,6 +76,5 @@ describe("App component", () => {
       </Provider>
     );
     expect(screen.queryByTestId("header")).not.toBeInTheDocument();
-    // expect(container.querySelector('footer')).toBeNull();
   });
 });

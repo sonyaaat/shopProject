@@ -173,7 +173,7 @@ const UserInfo = () => {
                         </span>
                       </h3>
                     </div>
-                    <label for="images" className="drop-container">
+                    <label htmlFor="images" className="drop-container">
                       <span className="drop-title">Drop files here</span>
                       or
                       <input
@@ -214,7 +214,7 @@ const UserInfo = () => {
                             <div className="form-group focused js-username">
                               <label
                                 className="form-control-label"
-                                for="input-username"
+                                htmlFor="input-username"
                               >
                                 Username
                               </label>
@@ -234,7 +234,7 @@ const UserInfo = () => {
                             <div className="form-group js-email">
                               <label
                                 className="form-control-label"
-                                for="input-email "
+                                htmlFor="input-email "
                               >
                                 Email address
                               </label>
@@ -249,7 +249,7 @@ const UserInfo = () => {
                             <div className="form-group focused js-firstname">
                               <label
                                 className="form-control-label"
-                                for="input-first-name"
+                                htmlFor="input-first-name"
                               >
                                 First name
                               </label>
@@ -269,7 +269,7 @@ const UserInfo = () => {
                             <div className="form-group focused js-lastname">
                               <label
                                 className="form-control-label"
-                                for="input-last-name"
+                                htmlFor="input-last-name"
                               >
                                 Last name
                               </label>
@@ -298,7 +298,7 @@ const UserInfo = () => {
                             <div className="form-group focused">
                               <label
                                 className="form-control-label"
-                                for="input-address"
+                                htmlFor="input-address"
                               >
                                 Address
                               </label>
@@ -320,7 +320,7 @@ const UserInfo = () => {
                             <div className="form-group focused">
                               <label
                                 className="form-control-label"
-                                for="input-city"
+                                htmlFor="input-city"
                               >
                                 City
                               </label>
@@ -340,7 +340,7 @@ const UserInfo = () => {
                             <div className="form-group focused">
                               <label
                                 className="form-control-label"
-                                for="input-country"
+                                htmlFor="input-country"
                               >
                                 Country
                               </label>
@@ -361,7 +361,7 @@ const UserInfo = () => {
                               <label
                                 required
                                 className="form-control-label"
-                                for="input-country"
+                                htmlFor="input-country"
                               >
                                 Postal code
                               </label>

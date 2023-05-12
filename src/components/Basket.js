@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { deleteFromBasket, getFav } from '../redux/main/main-operations';
-import { selectFav, selectIsLoading } from '../redux/main/main-selectors';
-import sprite from '../images/sprite.svg';
+import { useEffect } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { deleteFromBasket, getFav } from "../redux/main/main-operations";
+import { selectFav, selectIsLoading } from "../redux/main/main-selectors";
+import sprite from "../images/sprite.svg";
 
-import Spinner from './Spinner';
+import Spinner from "./Spinner";
 const Basket = () => {
   const isLoading = useSelector(selectIsLoading);
   const favorites = useSelector(selectFav);
@@ -14,15 +14,15 @@ const Basket = () => {
   useEffect(() => {
     dispatch(getFav());
   }, [dispatch]);
-  const onDeleteBasket=(itemId)=>{
-    dispatch(deleteFromBasket({id:itemId}))
-  }
- 
-  const totalSum=()=>{
-    return favorites.reduce((previousValue, {price})=>{
-return previousValue+Number(price)
-    },0)
-  }
+  const onDeleteBasket = (itemId) => {
+    dispatch(deleteFromBasket({ id: itemId }));
+  };
+
+  const totalSum = () => {
+    return favorites.reduce((previousValue, { price }) => {
+      return previousValue + Number(price);
+    }, 0);
+  };
   return (
     <>
       <main>
@@ -40,7 +40,10 @@ return previousValue+Number(price)
                   <div className="cart-header__count">Quantity</div>
                   <div className="cart-header__cost">Price</div>
                 </header>
-                { isLoading ? <Spinner/> : favorites.length > 0 &&
+                {isLoading ? (
+                  <Spinner />
+                ) : (
+                  favorites.length > 0 &&
                   favorites.map(({ name, price, image, itemId }) => (
                     <section className="product" key={itemId}>
                       <div className="product__img">
@@ -58,7 +61,12 @@ return previousValue+Number(price)
                       </div>
                       <div className="product__price">{price}</div>
                       <div className="product__controls">
-                        <button type="button" className="basket__remove" data-testid="basket__remove" onClick={()=>onDeleteBasket(itemId)}>
+                        <button
+                          type="button"
+                          className="basket__remove"
+                          data-testid="basket__remove"
+                          onClick={() => onDeleteBasket(itemId)}
+                        >
                           <svg width="30px" height="21px" className="icon-bin">
                             <use
                               className="icon-menu"
@@ -66,14 +74,22 @@ return previousValue+Number(price)
                             ></use>
                           </svg>
                         </button>
-                        {/* <Link to={`/buy/${itemId}`}>
-                       <button  className="basket__btn" > Buy </button></Link> */}
                       </div>
                     </section>
-                  ))}
-                  {favorites.length===0 && <p className="basket__empty">Your list is empty</p>}
-                  {favorites.length>0 && <p className='basket__sum'>Total sum:{totalSum()}</p>}
-                 {favorites.length>0 && <Link to="/confirmed" > <button  className="basket__btn buy__all" > Buy all </button></Link>}
+                  ))
+                )}
+                {favorites.length === 0 && (
+                  <p className="basket__empty">Your list is empty</p>
+                )}
+                {favorites.length > 0 && (
+                  <p className="basket__sum">Total sum:{totalSum()}</p>
+                )}
+                {favorites.length > 0 && (
+                  <Link to="/confirmed">
+                    {" "}
+                    <button className="basket__btn buy__all"> Buy all </button>
+                  </Link>
+                )}
               </section>
             </div>
           </div>

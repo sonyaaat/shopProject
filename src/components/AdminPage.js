@@ -75,7 +75,7 @@ const AdminPage = () => {
             <tbody className="table__body">
               {orders.length > 0 &&
                 orders.map((el) => (
-                  <tr>
+                  <tr key={el._id}>
                     <td>{el.itemId._id}</td>
                     <td>{el.owner}</td>
                     <td>{el.quantity}</td>
