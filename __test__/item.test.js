@@ -1,15 +1,13 @@
+import React from "react";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import "@testing-library/jest-dom";
-
-import React from "react";
-
 import { Provider } from "react-redux";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import Item from "../src/components/Item";
-
 const middlewares = [thunk];
+
 const mockStore = configureMockStore(middlewares);
 describe("Item", () => {
   let store;
@@ -24,7 +22,11 @@ describe("Item", () => {
           quantity: 5,
           image: "test.jpg",
         },
+       
       },
+      auth:{
+        isLoggedIn:true
+      }
     });
   });
 

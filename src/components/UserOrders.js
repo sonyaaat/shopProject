@@ -25,16 +25,19 @@ const UserOrders = () => {
   const [filteredOrders, setFilteredOrders] = useState(orders);
  
   useEffect(() => {
+    // setFilteredOrders(orders)
     if (filter && orders.length>0) {
       const res = [...orders].filter(item => {
         return item.status.toLowerCase() === filter.toLowerCase();
       });
+      console.log("A",res)
    
       setFilteredOrders(res);
     }
-    if (filter === 'All') {
+    if (filter === 'All' && orders.length>0) {
       setFilteredOrders(orders);
     }
+    
   }, [filter, orders]);
   return (
     <div className="container ">
@@ -73,8 +76,8 @@ const UserOrders = () => {
                 return (
                   <li key={_id} className="order">
                     <div className="order-info">
-                      <h3>{name}</h3>
-                      <p>{description}</p>
+                      {/* <h3>{name}</h3>
+                      <p>{description}</p> */}
                       <p className="status">{status}</p>
                       {(status === 'in progress' ||
                         status === 'In progress') && (
@@ -100,7 +103,7 @@ const UserOrders = () => {
                       </div>
                       <div className="order-price">
                         <span>Price:</span>
-                        <span>{price}</span>
+                        {/* <span>{price}</span> */}
                       </div>
                     </div>
                   </li>

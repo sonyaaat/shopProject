@@ -5,8 +5,10 @@ import { Link, useParams } from "react-router-dom";
 import { getItem, addToBasket } from "../redux/main/main-operations";
 import { selectItemInfo } from "../redux/main/main-selectors";
 import { clearSelectedItem } from "../redux/main/mainSlice";
+import { selectIsLoggedIn } from "../redux/auth/auth-selectors";
 const Item = () => {
   const dispatch = useDispatch();
+  const isLoggedIn=useSelector(selectIsLoggedIn)
   const { id } = useParams();
   const { name, description, price, quantity, image } =
     useSelector(selectItemInfo);
@@ -72,9 +74,11 @@ const Item = () => {
                       <div className="item__size">L</div>
                     </label>
                   </form>
-                  <button className="item__button" onClick={addBasket}>
+                  {isLoggedIn ? <button className="item__button" onClick={addBasket}>
                     Add to basket
-                  </button>
+                  </button> :
+                  <div>
+                    <Link to="/login" >Log in to buy</Link></div>}
                 </div>
               </div>
             </>
