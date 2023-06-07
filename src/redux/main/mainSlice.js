@@ -100,7 +100,8 @@ const mainSlice = createSlice({
     [deleteFromBasket.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.fav = action.payload.all;
+      console.log(action.payload)
+      state.fav = action.payload;
     },
     [deleteFromBasket.rejected]: handleRejected,
 

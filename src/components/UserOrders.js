@@ -103,7 +103,7 @@ const UserOrders = () => {
                       </div>
                       <div className="order-price">
                         <span>Price:</span>
-                        {/* <span>{price}</span> */}
+                        <span>{price}</span>
                       </div>
                     </div>
                   </li>

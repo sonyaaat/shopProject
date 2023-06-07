@@ -6,9 +6,14 @@ import {
   selectAdmins,
   selectOrders,
   selectUsers,
+  selectIsLoading
 } from "../redux/main/main-selectors";
+import Spinner from "./Spinner";
+
+
 
 const AdminPage = () => {
+  const isLoading = useSelector(selectIsLoading);
   const users = useSelector(selectUsers);
   const admins = useSelector(selectAdmins);
   const orders = useSelector(selectOrders);
@@ -20,6 +25,7 @@ const AdminPage = () => {
   }, [dispatch]);
   return (
     <>
+    {isLoading? <Spinner/>:
       <section className=" ">
         <div className="container admin">
           <p className="admin__header">Regular Users</p>
@@ -86,6 +92,7 @@ const AdminPage = () => {
           </table>
         </div>
       </section>
+      }
     </>
   );
 };

@@ -11,9 +11,11 @@ import {
 import sprite from "../images/sprite.svg";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const open = () => {
+  const openClose = () => {
     setIsOpen((prev) => !prev);
+    console.log(isOpen)
   };
+  
 
   const handleResize = () => {
     setIsOpen(window.innerWidth > 480 ? false : true);
@@ -38,8 +40,8 @@ const Header = () => {
           <button
             type="button"
             className="menu-button menu-button--close js-close-menu"
-            onClick={open}
-            aria-label="Переключатель мобильного меню"
+            onClick={openClose}
+            aria-label="перемикач мобильного меню"
             aria-expanded="false"
           >
             <svg width="40px" height="40px">
@@ -50,72 +52,115 @@ const Header = () => {
           <div className="mobile-menu ">
             <nav className="header__nav">
               <ul className="list header__list">
-                <li className="list header__item">
-                  <a
-                    href="/"
-                    className="header__link header__link--active link"
+                <li className="list header__item" onClick={openClose}>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                    isActive
+                      ? "header__link  link header__link--active"
+                      : "header__link  link "
+                  }
+                   
                   >
                     About us
-                  </a>
+                  </NavLink>
                 </li>
-                <li className="list header__item">
-                  <a href="/portfolio" className="header__link link">
+                <li className="list header__item" onClick={openClose}>
+                  <NavLink to="/portfolio"
+                   className={({ isActive }) =>
+                   isActive
+                     ? "header__link  link header__link--active"
+                     : "header__link  link "
+                 }>
                     Main Page
-                  </a>
+                  </NavLink>
                 </li>
-                <li className="list header__item">
-                  <a href="/chat" className="header__link link">
+                <li className="list header__item" onClick={openClose}>
+                  <NavLink to="/chat" 
+                   className={({ isActive }) =>
+                   isActive
+                     ? "header__link  link header__link--active"
+                     : "header__link  link "
+                 }>
                     Chat
-                  </a>
+                  </NavLink>
                 </li>
                 {!isLoggedIn && (
-                  <li className="list header__item js-login none">
-                    <a href="/login" className="header__link link">
+                  <li className="list header__item js-login none" onClick={openClose}>
+                    <NavLink to="/login" 
+                     className={({ isActive }) =>
+                     isActive
+                       ? "header__link  link header__link--active"
+                       : "header__link  link "
+                   }>
                       Login
-                    </a>
+                    </NavLink>
                   </li>
                 )}
                 
                 {role === "admin" && (
-                  <li className="list header__item js-admin none">
-                    <a href="/adminpage" className="header__link  link">
+                  <li className="list header__item js-admin none" onClick={openClose}>
+                    <NavLink to="/adminpage" 
+                     className={({ isActive }) =>
+                     isActive
+                       ? "header__link  link header__link--active"
+                       : "header__link  link "
+                   }>
                       Admin
-                    </a>
+                    </NavLink>
                   </li>
                 )}
                 {role && (
-                  <li className="list header__item js-user none">
-                    <a href="/userinfo" className="header__link  link">
+                  <li className="list header__item js-user none" onClick={openClose}>
+                    <NavLink to="/userinfo" 
+                     className={({ isActive }) =>
+                     isActive
+                       ? "header__link  link header__link--active"
+                       : "header__link  link "
+                   }>
                       User Info
-                    </a>
+                    </NavLink>
                   </li>
                 )}
                 {role === "user" && (
-                  <li className="list header__item js-user none">
-                    <a href="/myOrders" className="header__link  link">
+                  <li className="list header__item js-user none" onClick={openClose}>
+                    <NavLink to="/myOrders" 
+                     className={({ isActive }) =>
+                     isActive
+                       ? "header__link  link header__link--active"
+                       : "header__link  link "
+                   }>
                       My orders
-                    </a>
+                    </NavLink>
                   </li>
                 )}
 
                 {role === "admin" && (
                   <li className="list header__item js-add none">
-                    <a href="/add" className="header__link  link">
+                    <NavLink to="/add"  className={({ isActive }) =>
+                    isActive
+                      ? "header__link  link header__link--active"
+                      : "header__link  link "
+                  } onClick={openClose}>
                       Add Item
-                    </a>
+                    </NavLink>
                   </li>
                 )}
                 {role === "admin" && (
-                  <li className="list header__item js-add none">
-                    <a href="/adminOrders" className="header__link  link">
+                  <li className="list header__item js-add none" onClick={openClose}>
+                    <NavLink to="/adminOrders" className={({ isActive }) =>
+                    isActive
+                      ? "header__link  link header__link--active"
+                      : "header__link  link "
+                  }>
                       Orders
-                    </a>
+                    </NavLink>
                   </li>
                 )}
               </ul>
             </nav>
             {role && (
-              <Link to="/basket ">
+              <Link to="/basket " onClick={openClose}>
                 <svg width="50px" height="70px" className="header__basket">
                   <use href={`${sprite}#basket`}></use>
                 </svg>
@@ -195,7 +240,7 @@ const Header = () => {
                 {role === "admin" && (
                   <li className="list header__item js-admin none">
                     <NavLink
-                      to="adminpage"
+                      to="/adminpage"
                       className={({ isActive }) =>
                         isActive
                           ? "header__link  link header__link--active"
@@ -209,7 +254,7 @@ const Header = () => {
                 {role && (
                   <li className="list header__item js-user none">
                     <NavLink
-                      to="userinfo"
+                      to="/userinfo"
                       className={({ isActive }) =>
                         isActive
                           ? "header__link  link header__link--active"
@@ -223,6 +268,7 @@ const Header = () => {
                 {role === "user" && (
                   <li className="list header__item js-user none">
                     <NavLink
+                    
                       to="/myOrders"
                       className={({ isActive }) =>
                         isActive
@@ -237,6 +283,7 @@ const Header = () => {
                 {role === "admin" && (
                   <li className="list header__item js-add none">
                     <NavLink
+                   
                       to="/add"
                       className={({ isActive }) =>
                         isActive
@@ -283,9 +330,10 @@ const Header = () => {
               </ul>
             </div>
             {role && (
-              <Link to="/basket ">
-                <svg width="30px" height="21px" className="header__basket">
-                  <use href={`${sprite}#basket`}></use>
+             
+              <Link to="/basket " >
+                <svg width="30px" height="21px" className="header__basket" >
+                  <use href={`${sprite}#basket`} ></use>
                 </svg>
               </Link>
             )}
@@ -305,8 +353,8 @@ const Header = () => {
           <button
             type="button"
             className="menu-button menu-button--open"
-            onClick={open}
-            aria-label="Переключатель мобильного меню"
+            onClick={openClose}
+            aria-label="Перемикач мобільного меню"
             aria-expanded="false"
             aria-controls="mobile-menu"
           >

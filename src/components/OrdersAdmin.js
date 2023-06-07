@@ -3,8 +3,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders, updateStatus } from "../redux/main/main-operations";
 import { selectOrders } from "../redux/main/main-selectors";
+import { selectIsLoading } from "../redux/main/main-selectors";
+import Spinner from "./Spinner";
 
 const OrdersAdmin = () => {
+  const isLoading = useSelector(selectIsLoading);
   const [selectedOrder, setSelectedOrder] = useState();
   const [orderInfo, setOrderInfo] = useState();
 
@@ -38,6 +41,8 @@ const OrdersAdmin = () => {
     dispatch(updateStatus({ status: status.value, orderId: selectedOrder }));
   };
   return (
+ <>
+ {isLoading ? <Spinner/> :
     <div className="container order__container">
       <form onSubmit={onSubmit} className="order-search-form">
         <label htmlFor="size" className="order-search-label">
@@ -105,7 +110,8 @@ const OrdersAdmin = () => {
           </>
         )}
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 export default OrdersAdmin;

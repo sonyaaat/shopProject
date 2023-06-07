@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import sprite from "../images/sprite.svg";
+import Spinner from "./Spinner";
+import { selectIsLoading } from "../redux/main/main-selectors";
+import {  useSelector } from "react-redux";
 const Completed = () => {
+  const isLoading = useSelector(selectIsLoading);
   return (
-    <div className="container">
+    <>
+   {isLoading ? <Spinner/> :
+   <div className="container">
       <div className="confirmed__wrapper">
         <svg className="confirmed__svg">
           <use href={`${sprite}#icon-check`}></use>
@@ -15,6 +21,8 @@ const Completed = () => {
         </Link>
       </div>
     </div>
+  }
+  </>
   );
 };
 export default Completed;
